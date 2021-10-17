@@ -2,12 +2,14 @@ package com.example.xmlselector_example
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,6 +45,8 @@ class MainFragment : Fragment() {
         val cancelButton: TextView = view.findViewById(R.id.cancelButton)
         val confirmButton: TextView = view.findViewById(R.id.confirmButton)
 
+        cancelButton.isPressed = true
+
         cancelButton.setOnTouchListener { _, _ ->
             cancelButton.isPressed = true
             confirmButton.isPressed = false
@@ -53,6 +57,17 @@ class MainFragment : Fragment() {
             confirmButton.isPressed = true
             cancelButton.isPressed = false
             true
+        }
+
+        val backButton: TextView = view.findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            Log.d("Back", "Stop the Program")
+        }
+
+        val okButton: TextView = view.findViewById(R.id.okButton)
+        okButton.setOnClickListener {
+            Log.d("Next Page", "Go to Detail Page from Main Page")
+//            findNavController().navigate(R.id.action_mainFragment_to_detailPage)
         }
 
         return view
