@@ -66,8 +66,10 @@ class MainFragment : Fragment() {
 
         val okButton: TextView = view.findViewById(R.id.okButton)
         okButton.setOnClickListener {
-            Log.d("Next Page", "Go to Detail Page from Main Page")
-//            findNavController().navigate(R.id.action_mainFragment_to_detailPage)
+            activity?.let {
+                Log.d("Next Page", "Go to Detail Page from Main Page")
+                findNavController().navigate(R.id.action_mainFragment_to_detailPage)
+            }
         }
 
         return view
